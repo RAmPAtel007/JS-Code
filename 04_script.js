@@ -54,15 +54,25 @@ let person = {
    fname :'Ram',
    lname : 'patel',
 
-   get fullName(){
+   get fullName(){ //get is getter
        return `${person.fname} ${person.lname}`;
    },
-   set fullName(value){
+   set fullName(value){ //set is setter 
+      if(typeof value !== String){
+         throw new Error("you have not sent a string ");
+      }
    let parts =value.split (' ');
    this.fname =parts[0];
    this.lname=parts[1];
-   
-   
    }
-
 };
+// person.fullName ='sam pal';// the change is only made by setter if i comment above 4 line of setter it will not update the name  
+// console.log(person.fullName); 
+
+try{
+   person.fullName=true;
+}
+catch (e) {
+   alert(e);
+}
+console.log(person.fullName); 
